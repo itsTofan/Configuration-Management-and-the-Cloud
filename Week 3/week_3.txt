@@ -1,0 +1,206 @@
+CLOUD COMPUTPING
+
+    Cloud Services Overview
+        Various aspects of cloud computing and different service models offered by cloud providers. It explains that when we say a service is running in the cloud, 
+        it means it is hosted on remote servers in data centers that we can access over the internet. The primary service models are:
+            1. Software as a Service (SaaS): Cloud providers deliver complete applications to customers. Examples include Gmail, Dropbox, and Microsoft Office 365. The provider manages 
+            all aspects of the service, including hosting, capacity planning, and backups.
+
+            2. Platform as a Service (PaaS): Cloud providers offer preconfigured platforms to customers. It can be confusing since there are various platforms available. For instance, 
+            you could use an SQL database provided by a cloud provider, allowing you to focus on writing queries while the provider handles the rest.
+
+            3. Infrastructure as a Service (IaaS): Cloud providers offer a bare-bones computing environment, typically virtual machines and networking components. This provides more 
+            control and flexibility to the customer, who can configure and manage the virtual machines as needed.
+
+        The concept of regions is also mentioned, where geographical locations contain multiple data centers. Regions help ensure redundancy and can be selected based on factors 
+        like user proximity, latency considerations, and legal requirements.
+
+        The example of Qwiklabs is used to demonstrate the usage of Infrastructure as a Service, where virtual machines are provisioned with just the OS, and additional software 
+        is deployed by lab automation.
+
+    Scaling in the Cloud
+        Scaling refers to the ability to adjust the capacity of a cloud-based service to 
+        meet changing demands. In traditional IT settings, scaling can be time-consuming and involves purchasing additional hardware and integrating it into the infrastructure. 
+        In the cloud, scaling is much easier and quicker.
+
+        The capacity of a system is measured based on what the system does, such as the total disk space available, the number of queries per second it can handle, or the total 
+        bandwidth served. Cloud providers have a lot of available capacity that customers can use, and hosting infrastructure in the cloud allows for easy scaling to satisfy demand.
+
+        There are two ways to scale a service in the cloud
+            1. Horizontal Scaling: Adding more nodes (servers) to a service's pool to increase capacity. For example, deploying multiple web servers to distribute the load.
+            2. Vertical Scaling: Making nodes bigger by increasing resources like memory, CPU, and disk space. For instance, adding more memory to a caching server to handle higher usage.
+
+        Scaling can be done automatically or manually:
+            - Automatic Scaling: Using cloud provider services that adjust capacity based on metrics. It automatically adds or removes resources to meet demand.
+            - Manual Scaling: Human-controlled changes to the capacity. Smaller organizations might use manual scaling for less complex deployments.
+
+        While cloud technology offers many benefits, some IT teams might be hesitant to migrate due to concerns. The text suggests overcoming these fears by understanding the benefits 
+        of cloud computing and choosing appropriate scaling methods based on the deployment's complexity and needs.
+
+    Evaluating the Cloud
+        The concerns and considerations related to migrating from a traditional IT environment to the cloud. In a traditional IT setup, the IT team owns and controls the hardware, 
+        software, and network connections, providing a high level of control over the entire system. However, when moving to the cloud, some control needs to be relinquished to the cloud 
+        provider, depending on the chosen service model.
+
+        The three primary service models are:
+            1. Software as a Service (SaaS): In this model, the cloud provider has complete control over how the application runs, and users have limited settings to change. This is suitable 
+            when the provided software meets all needs, and users prefer focusing on using the software rather than managing it.
+            2. Platform as a Service (PaaS): In PaaS, the user is in charge of the code but not the underlying infrastructure. The cloud provider manages the application's runtime environment 
+            and other aspects, such as networking.
+            3. Infrastructure as a Service (IaaS): With IaaS, users have a high level of control. They can decide the operating system and applications running on virtual machines but still 
+            rely on the cloud provider for other aspects like network configuration.
+
+        Security is another significant concern when moving to the cloud. While cloud providers invest heavily in security, users also have a responsibility to follow reasonable security 
+        practices. Checking for certifications like SOC 1 and ISO 27001 can help verify the provider's security measures. Users need to apply appropriate security measures to protect their 
+        data, regardless of whether it's on-premise or in the cloud.
+
+        Other concerns, such as data storage location, support, and understanding the terms of service, should also be considered before migrating to the cloud. By preparing in advance and 
+
+    Migrating to the Cloud
+        The options for migrating IT infrastructure to the cloud. The migration details depend on the organization's current infrastructure and objectives 
+        for moving to a cloud provider. The trade-off in the migration process lies in the control over the services and the amount of maintenance work required.
+
+        The three main service models in the cloud are highlighted:
+            1. Infrastructure as a Service (IaaS): In IaaS, virtual machines running on the cloud provider's infrastructure are used. This model offers a lot of control over the infrastructure 
+            design, making it suitable for a lift and shift strategy, where physical servers are migrated to virtual machines in the cloud.
+            2. Platform as a Service (PaaS): PaaS is suitable for specific infrastructure requirements, where the cloud provider manages the platform, and users focus solely on writing code or 
+            using the provided service, such as managed web applications or managed databases.
+            3. Containers: Containers are self-contained applications with their configuration and dependencies. They provide portability, allowing applications to run consistently across 
+            different environments, making migration between platforms easier.
+
+        The text also introduces different cloud deployment models:
+            1. Public Cloud: Cloud services provided by third-party vendors to the general public.
+            2. Private Cloud: Cloud infrastructure owned and operated by a single organization, either on-site or in a remote data center.
+            3. Hybrid Cloud: A combination of public and private clouds, where some workloads are run in an organization's private cloud, and others in a public cloud.
+            4. Multi-Cloud: A mixture of public and/or private clouds from multiple vendors, sometimes in addition to on-site services. Multi-clouds offer extra protection and redundancy.
+
+        Overall, the text provides an overview of the considerations and different options for migrating to the cloud, and it sets the stage for understanding how cloud infrastructure works 
+        in practice.
+
+
+Managing Instances in the Cloud
+    
+    Spinning up VMs in the Cloud
+        The process of working with cloud services, specifically using the Google Cloud platform as an example. It emphasizes that while different cloud providers may 
+        have slightly different terminologies and interfaces, the underlying concepts remain the same.
+
+        When working with a cloud provider, users can manage their services through a web-based console. The console provides access to various services offered by the cloud provider, 
+        and users can familiarize themselves with the available options before performing any actions.
+
+        Creating a virtual machine (VM) in the cloud involves setting several parameters:
+            1. Instance Name: A user-defined name to identify the VM.
+            2. Region and Zone: Choosing the geographical location for the VM's data center to optimize performance for users in that region.
+            3. Machine Type: Configuring the number of virtual CPUs and memory allocated to the VM.
+            4. Boot Disk: Selecting the size and operating system of the VM's disk.
+
+        Creating VMs can be done through the web interface or the command-line interface. The web interface is convenient for quick inspections and cost estimations, while the command-line 
+        interface allows for automation and repeatability.
+
+        Automating VM creation can be achieved through reference images and templating. Reference images store the contents of a machine in a reusable format, while templating captures all 
+        system configurations, making it easier to create identical VMs in bulk.
+    
+    Creating a New VM Using the GCP Web UI
+        In this section of the video, the presenter demonstrates how to create a virtual machine (VM) on Google Cloud Platform (GCP) using the web-based console. Here are the 
+        steps they follow:
+            1. Navigate to console.cloud.google.com to access the GCP console.
+            2. Create a new project and name it "First Cloud Steps."
+            3. Go to the Compute Engine menu and select "VM instances."
+            4. Click the "Create" button to create a new VM.
+            5. Set the VM's name (e.g., "linux-instance") and choose the region and zone for the VM's data center. They recommend selecting a region close to the users for 
+            better performance.
+            6. Choose the machine type, which includes options for general purpose and memory optimized with various CPU and memory configurations.
+            7. Select the boot disk, which includes options for disk size and operating system. They choose an Ubuntu version for this example.
+            8. Configure access options. They select the default access, which allows SSH access to the instance.
+            9. Set firewall rules. They enable HTTP traffic for later use in a web server example.
+            10. Review the other available options (which are not covered in detail in the video) and then click on the "Command Line" link to view the command-line equivalent of creating the VM.
+            11. After reviewing the command-line parameters, close the window and proceed with creating the VM using the "Create" button.
+            12. The VM creation process may take some time as the system assigns resources, deploys the operating system, and connects network interfaces.
+            13. Once the VM is created, the presenter connects to it using SSH from the terminal.
+            14. To verify the OS, they run a command to get the weather information for their current location.
+    
+    Customizing VMs in GCP
+        How to create a virtual machine (VM) on Google Cloud Platform (GCP) using the web-based console. 
+        Here are the steps they follow:
+            1. Navigate to console.cloud.google.com to access the GCP console.
+            2. Create a new project and name it "First Cloud Steps."
+            3. Go to the Compute Engine menu and select "VM instances."
+            4. Click the "Create" button to create a new VM.
+            5. Set the VM's name (e.g., "linux-instance") and choose the region and zone for the VM's data center. They recommend selecting a region close to the users 
+            for better performance.
+            6. Choose the machine type, which includes options for general purpose and memory optimized with various CPU and memory configurations.
+            7. Select the boot disk, which includes options for disk size and operating system. They choose an Ubuntu version for this example.
+            8. Configure access options. They select the default access, which allows SSH access to the instance.
+            9. Set firewall rules. They enable HTTP traffic for later use in a web server example.
+            10. Review the other available options (which are not covered in detail in the video) and then click on the "Command Line" link to view the command-line equivalent
+            of creating the VM.
+            11. After reviewing the command-line parameters, close the window and proceed with creating the VM using the "Create" button.
+            12. The VM creation process may take some time as the system assigns resources, deploys the operating system, and connects network interfaces.
+            13. Once the VM is created, the presenter connects to it using SSH from the terminal.
+            14. To verify the OS, they run a command to get the weather information for their current location.
+    
+    Templating a Customized VM
+        How to create an instance template and use it to create multiple virtual machines based on that template. 
+        Here are the steps they follow:
+            1. Stop the VM that will serve as the basis for the template.
+            2. Click on the VM's name to access its details, then click on the boot disk to create an image.
+            3. Create an image based on the VM's disk and give it a name, such as "webserver-image."
+            4. Go to the "Instance templates" option and click on "Create a new instance template."
+            5. Provide a name for the template, such as "webserver-template."
+            6. Select the boot disk option and choose the image created in step 3.
+            7. Optionally, enable HTTP access to the instances created from this template.
+            8. Click "Create" to create the instance template.
+            9. Create a new VM instance from the template by going to "VM instances" and clicking on "Create instance."
+            10. Provide a name for the new instance, such as "webserver-one," and leave other settings as they are, as they are already pre-selected in the template.
+            11. Confirm that the web app is running on the newly created VM instance.
+            12. To create additional VM instances using the command line, use the "gcloud" command with the appropriate parameters, specifying the instance template and 
+            providing names for the instances.
+
+            The presenter emphasizes that using the command line interface (CLI) to create multiple VM instances is faster and more efficient, especially for batch actions. 
+            The CLI allows easy automation of tasks in scripts and deployments.
+    
+
+Automating Cloud Deployments
+
+    Cloud Scale Deployments
+        How to prepare services for scaling in the cloud. They explain the concept of load balancing and its role in distributing requests  among multiple nodes. 
+        Load balancers can use various strategies to select the appropriate node, such as round-robin, proximity-based selection, or least-loaded selection.
+
+        To achieve autoscaling, the presenter introduces instance groups, which can automatically spin up more nodes when demand increases and shut down nodes when demand decreases. 
+        Instance groups are cost-efficient because the service owner only pays for the machines in use at any given time.
+
+        However, since nodes might shut down, their local disks should be considered ephemeral. For data persistence, the presenter recommends creating separate storage resources and 
+        connecting them to the nodes. In this case, the database is usually served by multiple nodes behind a load balancer, and the cloud provider manages this using the platform as a 
+        service (PaaS) model.
+
+        To illustrate how web applications with many users can be managed, the presenter explains the architecture that includes entry points (web caching servers) with load balancers, 
+        the actual web service with a pool of nodes and load balancer, and a database layer with caching (e.g., Memcached or Redis).
+
+        The presenter emphasizes that cloud providers offer tools and features for automatic scaling, which allows users to rely on the infrastructure for managing instances, load 
+        distribution, and geographical capacity.
+
+    What is orchestration?
+        The concept of orchestration as the automated configuration and coordination of complex IT systems and services. Orchestration 
+        involves automating various tasks and configurations that need to interact with each other, often requiring the use of multiple systems.
+        
+        The example of a website infrastructure is used to illustrate the need for repeatable and automated configurations when deploying instances in different data centers. To achieve 
+        this, orchestration tools use APIs provided by cloud providers to interact directly with the cloud infrastructure from scripts or programs, offering more flexibility than using 
+        the web interface or command line.
+
+        APIs from cloud providers enable tasks such as creating, modifying, and deleting instances, as well as deploying complex configurations for how instances communicate with each other. 
+        This flexibility is crucial when automating complex setups, such as hybrid cloud setups where services are running both in the cloud and on-premise.
+
+        Orchestration tools are beneficial for setting up monitoring and alerting to detect and correct issues with services before users notice. By automating the configuration of monitoring 
+        rules and alerting, orchestration tools streamline the process across the entire deployment, regardless of the data center location.
+
+    Cloud Infrastructure as Code
+        The importance of storing cloud infrastructure as code using version control to create repeatable and manageable large-scale solutions. 
+        This approach allows for quick identification of the deployment's configuration, easy experimentation, rollback of changes, and tracking of changes over time.
+
+        Various cloud providers offer their own tools for managing resources as code, such as Cloud Formation by Amazon, Cloud Deployment Manager by Google, Azure Resource Manager by 
+        Microsoft, and Heat Orchestration Templates by OpenStack. However, an increasingly popular option in the orchestration field is Terraform. Terraform uses its domain-specific 
+        language to specify cloud infrastructure, and it can interact with multiple cloud providers and automation vendors using their respective APIs. This enables the reuse of 
+        infrastructure configuration across different cloud providers and simplifies the focus on infrastructure design.
+
+        The presenter highlights that the contents of cloud nodes or instances can be either long-lived or short-lived. Long-lived instances are continuously updated using a configuration 
+        management system like Puppet. On the other hand, short-lived instances are frequently replaced, and changes are applied during the instance's start-up..
+    

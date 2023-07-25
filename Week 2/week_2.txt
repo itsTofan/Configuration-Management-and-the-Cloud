@@ -235,3 +235,26 @@ Updating Deployments
         significant disruptions. The emphasis is on testing and risk mitigation to ensure smooth deployments and reliable infrastructure management.
 
     
+FINAL LAB
+cd /etc/puppet/code/environments/production/modules/packages
+cat manifests/init.pp
+
+class packages {
+   package { 'python-requests':
+       ensure => installed,
+   }
+   if $facts[os][family] == "Debian" {
+     package { 'golang':
+       ensure => installed,
+     }
+  }
+   if $facts[os][family] == "RedHat" {
+     package { 'nodejs':
+       ensure => installed,
+     }
+  }
+}
+
+gcloud compute instances describe linux-instance --zone=us-west4-a --format='get(networkInterfaces[0].accessConfigs[0].natIP)'
+sudo puppet agent -v --test
+apt policy golang
