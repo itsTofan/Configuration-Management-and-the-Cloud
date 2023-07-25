@@ -1,0 +1,158 @@
+Building Software for the Cloud
+
+    Storing Data in the Cloud
+        The excerpt discusses various data storage options available in cloud computing and highlights important considerations when choosing a storage solution. Cloud 
+        providers offer several storage technologies, such as block storage, shared file systems, and object storage (also known as blob storage). Each of these options 
+        serves different use cases.
+
+        1. Block Storage: It closely resembles physical storage on traditional machines and acts like a virtual hard drive. It can be either persistent (for long-lived instances) 
+        or ephemeral (for temporary instances).
+        2. Shared File Systems: These solutions allow data to be accessed by multiple instances through network file system protocols like NFS or CIFS, making it suitable for 
+        managing servers that need access to files.
+        3. Object Storage (Blob Storage): This type of storage stores generic files (blobs) like photos or videos in storage buckets. There is no file system, and data is accessed 
+        by unique names using APIs or special utilities.
+
+        Additionally, the excerpt mentions databases as a service, which come in SQL (relational) and NoSQL flavors. SQL databases use a traditional format and query language, 
+        while NoSQL databases are designed for distributed scale and speed, although they require specific APIs.
+
+        When choosing a storage class, cloud providers offer different options with varying performance, availability, and pricing. Throughput (data read/write in a given time), 
+        IOPS (input/output operations per second), and latency (time for read/write operations) are key performance factors to consider.
+
+        Furthermore, storage classes can be categorized as "hot" (frequently accessed) or "cold" (infrequently accessed) with different performance characteristics. Users may 
+        decide to use hot storage for frequently accessed data and cold storage for less frequently accessed data to optimize costs and performance.
+
+        In summary, selecting the appropriate storage solution in the cloud depends on factors such as the amount and type of data, geographical locations, usage patterns, and 
+        budget considerations. Understanding the various storage options and their performance characteristics is crucial in making the right choice for a given service or 
+        application in the cloud environment.
+    
+    Load Balancing
+        Load balancing methods used in cloud computing to distribute incoming requests across multiple instances of a service. 
+        Load balancing is essential for achieving high availability, scalability, and efficient resource utilization in cloud environments.
+
+        1. Round Robin DNS: This common load balancing technique distributes requests in a circular order to each server in the pool. DNS servers provide clients with different 
+        IP addresses for the same URL, and clients pick one of the addresses to reach the service. However, it lacks fine-grained control over load distribution and can't prevent 
+        clients from reaching overloaded servers.
+
+        2. Dedicated Load Balancer: To have more control over load distribution and faster changes, a dedicated load balancer acts as a proxy between clients and backend servers. 
+        Load balancers can use sticky sessions to ensure that requests from the same client are consistently directed to the same backend server, which can be useful but might lead 
+        to complexities during migrations.
+
+        3. Health Checks: Load balancers can periodically check the health of backend servers by sending simple queries and ensuring they respond correctly. If a server is found to 
+        be unhealthy, the load balancer stops sending new requests to it, maintaining a pool of healthy servers.
+
+        4. Geo DNS and GeoIP: These DNS configurations direct clients to the closest geographical load balancer, allowing users to connect to servers in their vicinity. This improves 
+        performance and reduces latency, providing a better user experience.
+
+        5. Content Delivery Networks (CDNs): CDNs consist of physical hosts located close to end users to reduce latency. CDNs cache content, such as videos or images, near users, 
+        enabling faster retrieval and reducing the load on origin servers.
+
+        Overall, load balancing and related techniques are crucial for optimizing cloud services, ensuring high performance, fault tolerance, and efficient resource management.
+    
+    Change Management
+        The importance of change management in maintaining a stable and reliable cloud service. Change management is the process of making controlled and safe changes to the service 
+        while ensuring continuous improvement and innovation.
+
+        Key points covered:
+        1. Well-Tested Changes: Before deploying any changes, ensure they are thoroughly tested using unit tests and integration tests. Continuous Integration (CI) systems can 
+        automatically build and test code with every change, providing early detection of issues.
+        2. Continuous Deployment (CD): CD enables automatic deployment of the build artifacts to different environments based on rules. Production and test environments should be 
+        separate, and changes must be thoroughly validated before being pushed to the production environment.
+        3. Multiple Testing Environments: For complex services with multiple developers, it's beneficial to have additional testing environments, such as development (dev) and 
+        pre-production (pre-prod), to test changes in different stages before releasing them to production.
+        4. A/B Testing: A/B testing allows experimenting with new features in production with real customers. Requests are served using different configurations (A and B), and 
+        the performance of each is compared to make informed decisions.
+        5. Post-Mortems: In case of failures, conduct post-mortems to learn from the experience and improve change management systems. Add tests or rules to prevent similar failures 
+        in the future.
+        6. Gaining Confidence: By using and refining change management systems and skills, the team will gain confidence in making changes quickly and safely.
+
+        Overall, change management ensures that cloud services can evolve and improve without compromising stability and reliability. It emphasizes the importance of thorough testing, 
+        controlled deployments, and learning from failures to achieve continuous improvement in cloud environments.
+    
+    Understanding Limitations
+        The excerpt discusses some of the potential problems and challenges that can arise when deploying and running applications in the cloud. It emphasizes the need for fault 
+        tolerance, handling unexpected events, and dealing with various limitations and dependencies. Here are the key points:
+        1. Fault Tolerance: Applications should be designed to handle unexpected events, instances being added or removed, and individual machine crashes without introducing problems.
+        2. Quotas and Limits: Cloud services often have quotas and rate limits on certain operations to prevent overloading the system. These limitations might require optimizing how 
+        operations are performed or requesting quota increases if needed.
+        3. Cost Management: Many cloud services have costs directly related to usage and come with usage quotas. Monitoring, alerting, and setting quotas can help manage costs and prevent 
+        overspending.
+        4. Dependencies on Cloud Services: When using Platform as a Service offerings, you rely on the cloud provider for maintenance and upgrades, which can sometimes lead to limited 
+        control over the software version being used.
+        5. Upgrade Cycle: Cloud providers actively maintain their services to ensure security, bug fixes, and feature updates. Balancing the need for stability with the desire for new 
+        features can be a consideration.
+        6. Early Access: Some cloud providers offer early access to beta or pre-release versions of their services, allowing users to test changes before they affect the production environment.
+
+        Understanding these trade-offs and challenges is essential to make the most out of deploying applications in the cloud effectively. Keeping applications well-tested, monitoring 
+        system behavior, and staying informed about service changes are all crucial aspects of successful cloud deployment.
+
+Monitoring and Alerting
+
+    Getting Started with Monitoring
+        The concept of monitoring and alerting in the context of cloud services. Monitoring allows us to track the performance and behavior of the system by collecting and analyzing various 
+        metrics. These metrics can be generic, like memory usage, or specific to the service being monitored, such as response codes for a web server or successful purchases in an 
+        e-commerce site.
+
+        Key points covered:
+        1. Metrics: Metrics are used to determine if the service is behaving as expected or encountering issues. Different services require different metrics to monitor their performance 
+        effectively.
+        2. Monitoring Systems: There are various monitoring systems available, offered directly by cloud providers like AWS Cloudwatch, Google Stack Driver, or Azure Metrics, or third-party 
+        solutions 
+        like Prometheus, Datadog, or Nagios.
+        3. Data Collection: Metrics can be collected using a pull model, where the monitoring system queries the service periodically, or a push model, where the service sends the metrics 
+        to the monitoring system at regular intervals.
+        4. Dashboards: The collected metrics can be visualized in dashboards, which provide a historical view of the data, helping identify trends and anomalies.
+        5. Whitebox vs. Blackbox Monitoring: Whitebox monitoring checks the system's behavior from the inside and relies on metrics collected from within the system. Blackbox monitoring, 
+        on the other hand, checks the system's behavior from the outside by making requests and verifying responses.
+        6. Alerting: To avoid continuously monitoring dashboards, alerting rules can be set up. When certain conditions are met, the system will automatically trigger alerts, notifying 
+        administrators about potential issues.
+
+        Monitoring and alerting are crucial for maintaining a reliable and responsive cloud service. By monitoring key metrics and setting up effective alerting rules, administrators can 
+        proactively detect and address potential problems, ensuring the service runs smoothly and meets users' expectations.
+
+    Getting Alerts When Things Go Wrong
+        The importance of setting up effective monitoring and alerting systems to ensure the continuous operation of IT services. It explains how automation can 
+        be used to detect problems and notify administrators promptly.
+        
+        Key points covered:
+        1. Need for Automation: To maintain 24/7 service availability, automation is essential to detect and address problems as quickly as possible. Manual monitoring and waiting for 
+        user complaints are not ideal approaches.
+        2. Periodic Checks: One basic approach is to periodically run a script that checks the health of the system and sends an email if any issues are detected. This can be accomplished 
+        using tools like cron on Linux systems.
+        3. Monitoring Systems: Utilizing monitoring systems, such as AWS Cloudwatch or Google Stack Driver, allows administrators to collect and evaluate metrics representing the state of 
+        the service automatically.
+        4. Alerting: Alerts are raised based on predefined conditions, such as high memory usage or frequent error responses. Different alerts can have varying levels of urgency, and the 
+        response time may differ accordingly.
+        5. Types of Alerts: Alerts can be categorized into two types - pages (urgent) and bugs/tickets (non-urgent). Pages require immediate attention and can be sent via SMS, automated 
+        calls, emails, or mobile apps. Non-urgent alerts can be routed to IT specialists for resolution during regular work hours.
+        6. Actionable Alerts: All alerts should be actionable, meaning they require some form of action or resolution. Non-actionable alerts create unnecessary noise and should be avoided.
+        7. Tweaking Alerts: To reduce unnecessary alerts, the system can be configured to raise an alert only if a specific condition persists or if certain patterns are detected. 
+        This helps avoid being flooded with alerts for transient issues.
+
+        Setting up effective alerts requires careful consideration of the metrics, conditions, and response levels for each situation. Collaborating with the team and refining the alerting 
+        system can lead to better peace of mind and efficient management of the service.
+
+    Service-Level Objectives
+        The excerpt discusses the concept of Service Level Objectives (SLOs) and Service Level Agreements (SLAs) in IT systems. SLOs are pre-established performance goals for a specific 
+        service, while SLAs are contractual commitments between a provider and a client, specifying the level of service to be provided and the consequences for failing to meet the 
+        agreed-upon objectives.
+
+        Key points covered:
+        1. Importance of Criticality: Different IT systems have varying levels of criticality. Some services are more important than others, and the level of service expected from each 
+        may differ.
+        2. Service Level Objectives (SLOs): SLOs are performance goals that help manage user expectations and guide the work of the team responsible for maintaining the service. They 
+        need to be measurable and are often expressed as a percentage of uptime.
+        3. Availability Targets: Availability targets are commonly referred to by the number of nines they promise. For example, 99% availability is a two 9 service, 99.9% availability 
+        is a three 9 service, and 99.999% availability is a five 9 service.
+        4. Trade-offs: Striving for higher availability, such as five nines, can be expensive and may not be necessary for all services. Two or three nines of availability might be 
+        sufficient for less critical systems.
+        5. Service Level Agreements (SLAs): SLAs are more strict promises between a service provider and its client, with potential consequences for breaching the agreement.
+        6. Importance of Monitoring: SLOs and SLAs help in deciding what metrics to measure and what alerts to create. Monitoring systems are used to track the service's performance 
+        against these objectives.
+        7. Error Budgets: Some teams use the concept of error budgets to manage services. An error budget represents the maximum tolerable downtime in a given period. Teams use this 
+        budget to decide when to focus on resolving issues instead of introducing new features.
+        8. Setting Achievable Goals: For those new to setting objectives for services, it's advisable to start with achievable goals and then refine them based on the service's behavior 
+        over time.
+
+        Overall, having clear and measurable SLOs and SLAs helps in ensuring that IT services meet user expectations and are managed effectively by the team responsible for their operation.
+
+    
